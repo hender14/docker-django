@@ -1,5 +1,9 @@
+from django.shortcuts import render
 from django.http import HttpResponse
 
-
 def index(request):
-    return HttpResponse("Hello, This is Django Polls")
+    context = {
+        'message': 'Welcome my BBS',
+        'players': ['勇者', '戦士', '魔法使い', '忍者']
+    }
+    return render(request, 'polls/index.html', context)
