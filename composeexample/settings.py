@@ -25,7 +25,7 @@ SECRET_KEY = '-=5k8)co!9p!!im&^3*e1m8xl@_z=v28fjnk6#jyi@i0%15_9p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -55,9 +55,7 @@ ROOT_URLCONF = 'composeexample.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            # os.path.join(BASE_DIR, 'polls/templates')
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,14 +77,10 @@ WSGI_APPLICATION = 'composeexample.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'postgres',
-        'NAME': 'mydb',
-        # 'USER': 'postgres',
-        'USER': 'root',
-        # 'PASSWORD': 'postgres',
-        'PASSWORD': '',        
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
         'HOST': 'db',
-        # 'HOST': '127.0.0.1',
         'PORT': 5432,
     }
 }
