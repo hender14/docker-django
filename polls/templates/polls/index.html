@@ -1,15 +1,34 @@
-  <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset='utf-8'>
-        <title>paiza bbs</title>
-        <style>body {padding: 10px;}</style>
-    </head>
-    <body>
-        <h1>paiza bbs</h1>
-        <p>{{ message }}</p>
+{% extends './base.html' %}
+{% block content %}
+    <h1>paiza bbs</h1>
+    <p>{{ message }}</p>
+
+	{% if searchForm %}
+	    <form action='{% url "polls:index" %}' method='get'>
+	        <div class='form-group'>
+	            {{ searchForm }}
+	            <input type="submit" class="btn btn-outline-primary" value="OK" />
+	            <a href="{% url 'polls:index' %}" class="btn btn-outline-secondary">クリア</a>
+	        </div>
+	    </form>
+	{% endif %}
+
+    <table  class='table table-striped table-hover'>
         {% for article in articles %}
-            <p>{{ article.content }}</p>
+            <tr>
+                <td>{{ article.content }}</td>
+                <td>{{ article.user_name }}</td>
+                <td>
+                    <a href='{% url "polls:detail" article.id %}' class='btn btn-outline-primary'>詳細</a>
+                </td>
+            </tr>
         {% endfor %}
-    </body>
-</html>
+    </table>
+
+    <div>
+        <a href='{% url "polls:new" %}' class='btn btn-outline-primary'>新規</a>
+    </div>
+    <!-- {% load static %}
+    <img src="{% static "polls/live.jpg" %}" alt="My image"/> -->
+{% endblock %}
+te
